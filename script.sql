@@ -30,6 +30,14 @@ CREATE TABLE Ingredients (
     name           Char(255)         NOT null
 );
 
+CREATE TABLE Recipe_Ingredients (
+    recipeId       integer           NOT null,
+    ingredientId   integer           NOT null,
+    CONSTRAINT     recipeIdFK        FOREIGN KEY  REFERENCES  Recipe(recipeId),
+    CONSTRAINT     ingredientIdFK    FOREIGN KEY  REFERENCES  ingredients(ingredientId),
+    CONSTRAINT     (recipeIdPK, ingredientIdPK )  PRIMARY KEY(recipeId, ingredientId),
+);
+
 CREATE TABLE Steps (
     steptId        integer           NOT null,
     description    TEXT              NOT null,
