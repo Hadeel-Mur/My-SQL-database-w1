@@ -44,3 +44,46 @@ CREATE TABLE Steps (
     CONSTRAINT     stepPK            PRIMARY KEY(stepId),
     CONSTRAINT     recipeIdFK        FOREIGN KEY  REFERENCES  Recipe(recipeId)
 );
+
+1- Where can you add a primary key?
+each table
+
+2- Which tables should be linked with a foreign key?
+(Recipe, Category), (Recipe_Ingredients, Recipe), (Recipe_Ingredients, Ingredients), (Steps, Recipe)
+
+3- What type of relationships do you see between the tables?
+(Recipe, Category) one to many
+(Recipe_Ingredients, Recipe) many to many
+(Recipe_Ingredients, Ingredients) many to many
+(Recipe, Steps) one to many
+
+
+- Can you make queries to get:
+  - All the vegetarian recipes with potatoes
+  - All the cakes that do not need baking
+  - All the vegan and Japanese recipes
+
+1-
+SELECT r.name
+FROM Recipe r
+JOIN Recipe_Ingredients ri on r.recipeId = ri.recipeId
+JOIN Ingredients i on r.ingredientId = i.ingredientId
+JOIN Category c on r.categoryId = c.categoryId
+WHERE c.name = 'vegetarian' AND i.name = 'potato'
+
+2-
+SELECT r.name
+FROM Recipe r
+JOIN Category c on r.categoryId = c.categoryId
+JOIN Steps s on r.recipeId = s.recipeId
+WHERE s.name = 'cake' AND s.description NOT LIKE 'bake'
+
+3-
+SELECT r.name
+FROM Recipe r
+JOIN Category c on r.categoryId = c.categoryId
+WHERE c.name = 'vegan' AND 
+SELECT r.recipeId
+FROM Recipe r
+JOIN Category c on r.categoryId = c.categoryId
+WHERE c.name = 'Japanses'
