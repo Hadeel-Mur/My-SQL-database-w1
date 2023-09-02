@@ -87,3 +87,8 @@ SELECT r.recipeId
 FROM Recipe r
 JOIN Category c on r.categoryId = c.categoryId
 WHERE c.name = 'Japanses'
+
+-- the databases in the Third Normal Form (3NF). Each table has a clear primary key, and non-prime attributes depend only on the primary key. Relationships are established using foreign keys.
+-- Adding thousands of recipes to a database requires careful planning, optimization, and consideration of the performance and user experience implications. Implementing best practices in 
+-- terms of database design, indexing, and query optimization will help mitigate the challenges associated with handling large amounts of data.
+-- Insertion Speed, Query Performance, Data Duplication, Updating and Deleting, Search Performance, User Interface, Resource Utilization:
