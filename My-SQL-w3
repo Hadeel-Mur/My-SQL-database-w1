@@ -1,1 +1,45 @@
+CREATE TABLE recipes (
+   id INT AUTO-INCREMENT PRIMARY KEY,
+   name VARCHAR(255) NOT NULL
+  );
 
+CREATE TABLE category (
+    id INT AUTO-INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE
+  );
+
+CREATE TABLE recipes (
+   id INT AUTO-INCREMENT PRIMARY KEY,
+   name VARCHAR(255) NOT NULL UNIQUE
+  );
+
+CREATE TABLE steps (
+   id INT AUTO-INCREMENT PRIMARY KEY,
+   description VARCHAR(255) NOT NULL UNIQUE
+  );
+
+CREATE TABLE recipe_categories (
+   id INT PRIMARY KEY,
+   recipe_id INT NOT NULL,
+   category_id INT NOT NULL,
+   FORIGN KEY (recipe_id) REFERENCE recipes (id),
+   FORIGN KEY (category_id) REFERENCE category (id)
+  );
+
+CREATE TABLE recipe_ingredients (
+   id INT PRIMARY KEY,
+   recipe_id INT NOT NULL,
+   ingredient_id INT NOT NULL,
+   quantity VARCHAR(255) NOT NULL, // 100 grs, 1 cup
+   FORIGN KEY (recipe_id) REFERENCE recipes (id),
+   FORIGN KEY (ingredient_id) REFERENCE ingredients (id)
+  );
+
+CREATE TABLE recipe_steps (
+   id INT PRIMARY KEY,
+   recipe_id INT NOT NULL,
+   step_id INT NOT NULL,
+   step_order INT NOT NULL, //1, 2, 3
+   FORIGN KEY (recipe_id) REFERENCE recipes (id),
+   FORIGN KEY (step_id) REFERENCE steps (id)
+  );
