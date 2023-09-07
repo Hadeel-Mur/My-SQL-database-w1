@@ -1,0 +1,45 @@
+Recipes Collection:
+{
+   "_id": ObjectId("recipe_id"),
+   "name": "Recipe Name",
+   "categories": ["category_id_1", "category_id_2"],
+   "ingredients": [
+      {
+         "ingredient_id": "ingredient_id_1",
+         "quantity": "100 grs"
+      },
+      {
+         "ingredient_id": "ingredient_id_2",
+         "quantity": "1 cup"
+      }
+   ],
+   "steps": [
+      {
+         "step_id": "step_id_1",
+         "step_order": 1,
+         "description": "Step 1 Description"
+      },
+      {
+         "step_id": "step_id_2",
+         "step_order": 2,
+         "description": "Step 2 Description"
+      }
+   ]
+}
+
+Categories Collection:
+{
+   "_id": ObjectId("category_id_here"),
+   "name": "Category Name"
+}
+
+Steps Collection:
+{
+   "_id": ObjectId("step_id_here"),
+   "description": "Step Description"
+}
+
+1-RecipeCategories Collection: the relationship between recipes and categories. 
+2-RecipeIngredients Collection: the relationship between recipes and ingredients
+3-RecipeSteps Collection: the relationship between recipes and steps,
+
